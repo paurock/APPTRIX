@@ -1,6 +1,9 @@
 import axios from "axios";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {youTrackToken} from "../../api/tokens";
+import BasicTable from "../../components/BasicTable";
+import {useNavigate} from "react-router-dom";
+
 const baseURL =
   "https://demo-apptrix.myjetbrains.com/youtrack/api/admin/users?fields=id,login,name,email";
 
@@ -13,17 +16,23 @@ const tokenConfig = {
 };
 
 const GetUsers = () => {
+  const navigate = useNavigate();
+  const [users, setUsers] = useState([]);
   useEffect(() => {
     axios
       .get(baseURL, tokenConfig)
       .then(res => {
-        res.data.forEach(user => console.log(user));
-        console.log(res);
+        setUsers(res.data);
       })
-      .catch(err => console.log("ERRRROR", err));
+      .catch(err => console.log("ERROR", err));
   }, []);
-  console.log("GET USERS");
-  return <div>Hello</div>;
+
+  return (
+    <div>
+      <BasicTable USERS={users} />
+      <button onClick={() => navigate("/")}>Back</button>
+    </div>
+  );
 };
 
 export default GetUsers;

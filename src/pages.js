@@ -1,6 +1,9 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 export function Home() {
+  const navigate = useNavigate();
+  navigate("/users");
   return (
     <div>
       <h1>Home</h1>
@@ -9,6 +12,7 @@ export function Home() {
         doloremque ipsa soluta error ad obcaecati sunt, magni molestiae eveniet,
         placeat fugiat, vero minima perspiciatis reiciendis! Nisi iusto possimus
         blanditiis fuga.
+        <button onClick={() => navigate("/users")}>See Users</button>
       </p>
     </div>
   );

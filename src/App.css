@@ -149,3 +149,13 @@ footer {
   margin-top: 120px;
   color: #aaa;
 }
+
+ ul li {
+   padding: 5px 0;
+ }
+
+ td, th {
+   min-width:100px;
+   text-align: left;
+   padding: 15px 5px 0 0;
+ }
