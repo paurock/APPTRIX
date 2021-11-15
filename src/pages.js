@@ -12,7 +12,12 @@ export function Home() {
         doloremque ipsa soluta error ad obcaecati sunt, magni molestiae eveniet,
         placeat fugiat, vero minima perspiciatis reiciendis! Nisi iusto possimus
         blanditiis fuga.
-        <button onClick={() => navigate("/users")}>See Users</button>
+        <div>
+          <button onClick={() => navigate("/users")}>See Users</button>
+        </div>
+        <div>
+          <button onClick={() => navigate("/projects")}>See Projects</button>
+        </div>
       </p>
     </div>
   );

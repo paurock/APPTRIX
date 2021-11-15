@@ -6,6 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import {useEffect} from "react";
 import {loadUser} from "./state/actions/auth";
 import GetUsers from "./state/actions/getUsers";
+import GetProjects from "./state/actions/getProjects";
 import UserDetails from "./components/UserDetails";
 
 function App({store}) {
@@ -19,6 +20,7 @@ function App({store}) {
   return (
     <div className="App">
       <Routes>
+        <Route path="/projects" element={<GetProjects />} />
         <Route path="/users" element={<GetUsers />} />
         <Route exact path="/" element={<PrivateRoute />} />
         <Route exact path="/login" element={<Login />} />
