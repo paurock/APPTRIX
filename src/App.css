@@ -25,6 +25,7 @@ footer {
   font-family: "Quicksand", sans-serif;
   color: #444;
 }
+
 ul {
   list-style-type: none;
 }
@@ -70,11 +71,12 @@ form {
   background: white;
 }
 input {
-  padding: 10px 12px;
+  padding: 5px 12px;
   border-radius: 4px;
   border: 1px solid #ddd;
   font-size: 1em;
-  width: 100%;
+  width: 80%;
+  margin-top: 10px;
 }
 label {
   display: block;
@@ -150,12 +152,13 @@ footer {
   color: #aaa;
 }
 
- ul li {
-   padding: 5px 0;
- }
+ul li {
+  padding: 5px 0;
+}
 
- td, th {
-   min-width:100px;
-   text-align: left;
-   padding: 15px 5px 0 0;
- }
+td,
+th {
+  min-width: 100px;
+  text-align: left;
+  padding: 15px 5px 0 0;
+}

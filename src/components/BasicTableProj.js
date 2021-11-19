@@ -1,16 +1,15 @@
-import React, {useMemo} from "react";
-import {useTable, useFilters, useGlobalFilter} from "react-table";
-import {COLUMNS_PROJ} from "./columnsProj";
-import {Link} from "react-router-dom";
-import {ColumnFilter} from "./ColumnFilter";
+import React, { useMemo } from "react";
+import { useTable, useFilters } from "react-table";
+import { COLUMNS_PROJ } from "./columnsProj";
+import { ColumnFilter } from "./ColumnFilter";
 
-const BasicTableProj = ({PROJECTS}) => {
+const BasicTableProj = ({ PROJECTS }) => {
   const columns = useMemo(() => COLUMNS_PROJ, []);
   const data = useMemo(() => PROJECTS, [PROJECTS]);
 
   const defaultColumn = React.useMemo(
     () => ({
-      Filter: ColumnFilter
+      Filter: ColumnFilter,
     }),
     []
   );
@@ -22,12 +21,11 @@ const BasicTableProj = ({PROJECTS}) => {
     footerGroups,
     rows,
     prepareRow,
-    state
   } = useTable(
     {
       columns,
       data,
-      defaultColumn
+      defaultColumn,
     },
     useFilters
   );
@@ -36,9 +34,9 @@ const BasicTableProj = ({PROJECTS}) => {
     <>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map(headerGroup => (
+          {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
+              {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>
                   {column.render("Header")}
                   <div>{column.canFilter ? column.render("Filter") : null}</div>
@@ -48,11 +46,11 @@ const BasicTableProj = ({PROJECTS}) => {
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {rows.map((row) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
+                {row.cells.map((cell) => {
                   return (
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
@@ -62,9 +60,9 @@ const BasicTableProj = ({PROJECTS}) => {
           })}
         </tbody>
         <tfoot>
-          {footerGroups.map(footerGroup => (
+          {footerGroups.map((footerGroup) => (
             <tr {...footerGroup.getFooterGroupProps()}>
-              {footerGroup.headers.map(column => (
+              {footerGroup.headers.map((column) => (
                 <td {...column.getFooterProps()}>{column.render("Footer")}</td>
               ))}
             </tr>

@@ -1,11 +1,11 @@
 import axios from "axios";
-import {refreshToken, accessToken} from "../../api/tokens";
+import { refreshToken, accessToken } from "../../api/tokens";
 import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   GET_ERRORS,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
 } from "./types";
 
 //Axios config
@@ -17,13 +17,12 @@ const createHeaders = () =>
 
 export const axiosInstance = axios.create({
   baseURL: baseURL,
-  timeout: 3000
+  timeout: 3000,
 });
 
 //fn for login authorisation
 export const connectAndSaveToken = (
   formData,
-  navigate,
   setUsernameError,
   setPasswordError,
   setMessageError,
@@ -32,26 +31,26 @@ export const connectAndSaveToken = (
   axiosInstance
     .post(`token/`, {
       username: formData.username,
-      password: formData.password
+      password: formData.password,
     })
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: res
+        payload: res,
       });
       createHeaders();
     })
-    .catch(err => {
+    .catch((err) => {
       //handle errors and set them to redux store
       try {
-        const {detail, username, password} = err.response.data;
+        const { detail, username, password } = err.response.data;
         dispatch({
           type: GET_ERRORS,
           payload: {
             message: detail,
             username: username,
-            password: password
-          }
+            password: password,
+          },
         });
         //Set errors for the form (devmode)
         setMessageError(err.response.data.detail);
@@ -69,23 +68,23 @@ export const loadUser = (dispatch, navigate) => {
   // User Loading
   if (accessToken) {
     dispatch({
-      type: USER_LOADED
+      type: USER_LOADED,
     });
     createHeaders();
   } else if (refreshToken) {
     axiosInstance
-      .post("/token/refresh/", {refresh: refreshToken})
-      .then(response => {
+      .post("/token/refresh/", { refresh: refreshToken })
+      .then((response) => {
         dispatch({
-          type: USER_LOADED
+          type: USER_LOADED,
         });
       });
   } else {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR,
     });
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
     });
   }
 };

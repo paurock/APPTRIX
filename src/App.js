@@ -1,15 +1,15 @@
 import "./App.css";
 import Login from "./components/Login";
-import {Routes, Route, useNavigate} from "react-router-dom";
-import {connect, useDispatch} from "react-redux";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
 import PrivateRoute from "./components/PrivateRoute";
-import {useEffect} from "react";
-import {loadUser} from "./state/actions/auth";
+import { useEffect } from "react";
+import { loadUser } from "./state/actions/auth";
 import GetUsers from "./state/actions/getUsers";
 import GetProjects from "./state/actions/getProjects";
 import UserDetails from "./components/UserDetails";
 
-function App({store}) {
+function App({ store }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -32,8 +32,8 @@ function App({store}) {
     </div>
   );
 }
-const mapStateToProps = store => ({
-  store
+const mapStateToProps = (store) => ({
+  store,
 });
 
 export default connect(mapStateToProps)(App);
